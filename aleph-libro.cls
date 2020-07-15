@@ -12,12 +12,12 @@
 %% Copyright (C) 2019 by Andres Merino <mat.andresmerino@gmail.com>
 %% 
 %% Para un mejor uso y entendimiento de la actual clase,
-%% consultar la documentaci^^c3^^b3n.
+%% consultar la documentación.
 %% 
 \NeedsTeXFormat{LaTeX2e}[2009/09/24]
 \ProvidesClass{aleph-libro}[2019/12/17 v1.0]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% --- Inicializaci^^c3^^b3n
+%% --- Inicialización
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  Primero definimos una serie de comandos auxiliares para las opciones
 \newcommand\@series{Series}
@@ -30,27 +30,33 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% --- Opciones
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  Opciones de tama^^c3^^b1o de letra.
+%%  Opciones de tamaño de letra.
 \DeclareOption{10pt}{\PassOptionsToClass{10pt}{book}}
 \DeclareOption{11pt}{\PassOptionsToClass{11pt}{book}}
 \DeclareOption{12pt}{\PassOptionsToClass{12pt}{book}}
-%%  Opciones predeterminadas de tama^^c3^^b1o de p^^c3^^a1gina |compacto| y |amplio|.
+%%  Opciones predeterminadas de tamaño de página |compacto| y |amplio|.
 \DeclareOption{amplio}{
     \PassOptionsToPackage{paperwidth=195mm,paperheight=265mm,twoside,
     inner=2.2cm,outer=2.5cm,top=2.25cm,bottom=2.25cm}{geometry}}
 \DeclareOption{compacto}{
     \PassOptionsToPackage{paperwidth=160mm,paperheight=240mm,twoside,
     inner=2.2cm,outer=1.7cm,top=2.25cm,bottom=2.25cm}{geometry}}
-%%  Opci^^c3^^b3n |notasm| genera el margen adecuado para colocar notas al margen
+\DeclareOption{a4}{
+    \PassOptionsToPackage{paperwidth=210mm,paperheight=297mm,twoside,
+    inner=2.2cm,outer=2.2cm,top=2.25cm,bottom=2.25cm}{geometry}}
+\DeclareOption{a5}{
+    \PassOptionsToPackage{paperwidth=148mm,paperheight=210mm,twoside,
+    inner=1.7cm,outer=1.7cm,top=2.25cm,bottom=2.25cm}{geometry}}
+%%  Opción |notasm| genera el margen adecuado para colocar notas al margen
 \DeclareOption{notasm}{
     \PassOptionsToPackage{outer=50mm,
     marginparwidth=4.4cm,marginparsep=0.3cm}{geometry}}
-%%  La opci^^c3^^b3n |numobs| coloca n^^c3^^bamero en las observaciones.
+%%  La opción |numobs| coloca número en las observaciones.
 \DeclareOption{numobs}{\renewcommand\@numobs{true}}
-%%  Opci^^c3^^b3n de formato |fclasico| o |fnuevo|.
+%%  Opción de formato |fclasico| o |fnuevo|.
 \DeclareOption{fclasico}{\renewcommand\@tipo{fclasico}}
 \DeclareOption{fnuevo}{\renewcommand\@tipo{fnuevo}}
-%%  Opci^^c3^^b3n de formato |npblanco|.
+%%  Opción de formato |npblanco|.
 \DeclareOption{npblanco}{\renewcommand\@npblanco{true}}
 %%  Opciones predeterminadas son |compacto|, |fclasico| y |10pt|.
 \ExecuteOptions{compacto,fclasico,10pt}
@@ -137,23 +143,23 @@
    \addtolength{\belowdisplayskip}{-0.5mm}
    \frontmatter}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% --- Definici^^c3^^b3n de comandos de datos
+%% --- Definición de comandos de datos
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  Autor: autor corto, autor normal
 \newcommand{\autor}[2][]{\ifthenelse{\equal{#1}{}}
    {\newcommand\@autorcorto{#2}\newcommand\@autor{#2}}
    {\newcommand\@autorcorto{#1}\newcommand\@autor{#2}}}
-%% T^^c3^^adtulo del libro.
+%% Título del libro.
 \newcommand{\titulo}[1]{\newcommand\@titulo{#1}}
-%%  Subt^^c3^^adtulo del libro, opcional.
+%%  Subtítulo del libro, opcional.
 \newcommand{\subtitulo}[2][]{\ifthenelse{\not\equal{#1}{}}
 {\renewcommand\@sepsubtitulo{#1}}{}\renewcommand\@subtitulo{#2}}
-%%  Fasc^^c3^^adculo del libro, opcional
+%%  Fascículo del libro, opcional
 \newcommand{\fasciculo}[1]{\renewcommand\@fasciculo{#1}}
 %%  Nombre de la serie, singular y plural
 \newcommand{\serie}[2]{\renewcommand\@serie{#2}
 \renewcommand\@series{#1}}
-%%  N^^c3^^bamero del libro en la serie
+%%  Número del libro en la serie
 \newcommand{\numero}[1]{\newcommand\@numero{#1}}
 %%  Logos: 2 y 3 opcionales, con longuitud de portada y portadilla
 \newcommand{\logouno}[3]{\renewcommand\@logouno{#1}
@@ -172,9 +178,9 @@
 \newcommand{\idioma}[1]{\renewcommand\@idioma{#1}}
 %%  Editor, opcional
 \newcommand{\editor}[1]{\renewcommand\@editor{#1}}
-%%  Asistente de edici^^c3^^b3n, opcional
+%%  Asistente de edición, opcional
 \newcommand{\asisedicion}[1]{\renewcommand\@asisedicion{#1}}
-%%  Revisi^^c3^^b3n acad^^c3^^a9mica, opcional
+%%  Revisión académica, opcional
 \newcommand{\revision}[1]{\renewcommand\@revision{#1}}
 %%  Asistente, opcional
 \newcommand{\asistente}[1]{\renewcommand\@asistente{#1}}
@@ -184,12 +190,12 @@
 \newcommand{\ISBN}[1]{\newcommand\@ISBN{#1}}
 %%  Publicado por
 \newcommand{\publicado}[1]{\renewcommand\@publicado{#1}}
-%%  Fecha de publicaci^^c3^^b3n
+%%  Fecha de publicación
 \newcommand{\fechapub}[1]{\newcommand\@fechapub{#1}}
-%%  N^^c3^^bamero de edici^^c3^^b3n y fecha
+%%  Número de edición y fecha
 \newcommand{\edicion}[2]{\newcommand\@edicion{#1}
 \newcommand\@fechaedicion{#2}}
-%%  N^^c3^^bamero de impresi^^c3^^b3n y fecha opcional correcciones
+%%  Número de impresión y fecha opcional correcciones
 \newcommand{\impresion}[3][]{\renewcommand\@impresion{#2}
 \newcommand\@fechaimpresion{#3}\newcommand\@correcciones{#1}}
 %%  Derechos
@@ -203,16 +209,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% --- Portada
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  Altura de la caja de t^^c3^^adtulo
+%%  Altura de la caja de título
 \newcommand\@ytitulo{0.55\paperheight}
 \newcommand{\ytitulo}[1]{\renewcommand{\@ytitulo}{#1}}
-%%  Longuitud de la caja de t^^c3^^adtulo
+%%  Longuitud de la caja de título
 \newcommand\@ltitulo{0.7\paperwidth}
 \newcommand{\ltitulo}[1]{\renewcommand{\@ltitulo}{#1}}
 %%  Esquina cuadro blanco
 \newcommand\@ecuadroblanco{.24\paperwidth}
 \newcommand{\ecuadroblanco}[1]{\renewcommand{\@ecuadroblanco}{#1}}
-%%  Posici^^c3^^b3n de logos
+%%  Posición de logos
 \newcommand\@xlogouno{}
 \newcommand{\xlogouno}[1]{\renewcommand{\@xlogouno}{#1}}
 \newcommand\@xlogodos{}
@@ -233,7 +239,7 @@
     \rput(0.5\paperwidth,.495\paperheight)
         {\includegraphics[width=\@llogofondo]{\@logofondo}}
     \end{psclip}}
-%%  T^^c3^^adtulo
+%%  Título
     \rput(0.5\paperwidth,\@ytitulo)
     {\psshadowbox[framearc=0.25,linecolor=colorportada,
         shadowcolor=colorportada!50,framesep=0.5cm]
@@ -310,13 +316,13 @@
 \restoregeometry
 \ifthenelse{\equal{\@npblanco}{true}}{}
     {\cleartooddpage[\thispagestyle{empty}\vspace*{\fill}
-    \textcolor{gray!50}{Esta p^^c3^^a1gina ha sido dejada intencionalmente en blanco.}
+    \textcolor{gray!50}{Esta página ha sido dejada intencionalmente en blanco.}
     \par\vspace*{\fill}]}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% --- Portadilla
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  Este comando genera la portadilla y la hoja de cr^^c3^^a9ditos.
+%%  Este comando genera la portadilla y la hoja de créditos.
 \newcommand{\portadilla}{
     \newgeometry{left=3cm,right=3cm,top=3cm,bottom=3cm}
     \begin{spacing}{1.0}
@@ -377,11 +383,11 @@
     }
     }
     \par\vspace*{0.001\textheight}
-%%  P^^c3^^a1gina de cr^^c3^^a9ditos
+%%  Página de créditos
 \newpage
 \thispagestyle{empty}
 \raggedright
-%%  Serie, t^^c3^^adtulo y autor
+%%  Serie, título y autor
     \vspace*{\baselineskip}
     {\large\textbf{\@serie\ No. \@numero}}\\[0.6\baselineskip]
     {\scshape
@@ -400,7 +406,7 @@
     }}
     {\@autor}\par
     \small\vspace*{4\baselineskip}
-%%  Cr^^c3^^a9ditos
+%%  Créditos
     \ifthenelse{\equal{\@asistente}{}}{}
         {\textbf{Asistentes}: \@asistente \\[1mm]}
     \ifthenelse{\equal{\@editor}{}}{}
@@ -418,7 +424,7 @@
     \ifthenelse{\equal{\@publicado}{}}{}
     {Publicado \@publicado\par
 \vspace*{4\baselineskip}}
-%%  Edici^^c3^^b3n e impresi^^c3^^b3n
+%%  Edición e impresión
 \@edicion\ edici\'on: \@fechaedicion\\[1mm]
 \ifthenelse{\equal{\@impresion}{}}{}
 {
@@ -440,7 +446,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% --- Contraportada
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  Altura de la caja de t^^c3^^adtulo
+%%  Altura de la caja de título
 \newcommand\@ytexto{0.55\paperheight}
 \newcommand{\ytexto}[1]{\renewcommand{\@ytexto}{#1}}
 %%  Medidas
@@ -452,7 +458,7 @@
 \newcommand{\contraportada}[3]{
 \ifthenelse{\equal{\@npblanco}{true}}{}
     {\cleartooddpage[\thispagestyle{empty}\vspace*{\fill}
-    \textcolor{gray!50}{Esta p^^c3^^a1gina ha sido dejada intencionalmente en blanco.}
+    \textcolor{gray!50}{Esta página ha sido dejada intencionalmente en blanco.}
     \par\vspace*{\fill}]}
     \newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
     \thispagestyle{empty}
@@ -466,7 +472,7 @@
         \slshape #3
         \end{spacing}\vspace{-\baselineskip}\end{minipage}
     }
-%%  C^^c3^^b3digo QR e ISBN
+%%  Código QR e ISBN
 \rput(\xqr,.09\paperheight){\psbarcode{#2}
         {width=1 height=1}{qrcode}}
 \rput(\xisbn,.09\paperheight){\psbarcode{\@ISBN}
@@ -475,7 +481,7 @@
     \psframe*[linecolor=colorportada](-.1,.245\paperheight)
         (1.01\paperwidth,.295\paperheight)
 \rput(.5\paperwidth,.27\paperheight){\LARGE\color{white} \textbf{#1}}
-%%  Linea t^^c3^^adtulo
+%%  Linea título
 \psframe*[linecolor=colorportada](-.1,.72\paperheight)
         (1.01\paperwidth,.77\paperheight)
 \rput(.5\paperwidth,.745\paperheight){\huge\color{white} \textbf{\@titulo}}
@@ -493,20 +499,20 @@
    \restoregeometry
    \cleartooddpage[\thispagestyle{empty}]
    }
-%%  Adem^^c3^^a1s se definen los estilos. Estilo de texto del cap^^c3^^adtulo
+%%  Además se definen los estilos. Estilo de texto del capítulo
 \titlecontents{chapter}[1.6cm]
     {\addvspace{2pt}\color{colortext}\Large\bfseries\scshape}
     {\contentslabel[\large Cap. \thecontentslabel]{1.6cm}}
     {}
     {\normalsize\hfill\thecontentspage}
-%%  Estilo de texto del secci^^c3^^b3n
+%%  Estilo de texto del sección
 \titlecontents{section}[1.6cm]
     {\addvspace{3pt}}
     {\contentslabel[\thecontentslabel]{0.8cm}}
     {}
     {\ \titlerule*[.5pc]{.}\;\; \thecontentspage}
     []
-%%  Estilo de texto del subsecci^^c3^^b3n
+%%  Estilo de texto del subsección
 \titlecontents{subsection}[2.5cm]
     {\addvspace{1pt}\small}
     {\contentslabel[\thecontentslabel]{0.9cm}}
@@ -545,11 +551,11 @@
     \end{mdframed}
     }[#1]}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% --- Estilo p^^c3^^a1gina
+%% --- Estilo página
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  Interlineado
 \renewcommand{\baselinestretch}{\@interlineado}
-%%  Encabezado y pie de p^^c3^^a1gina
+%%  Encabezado y pie de página
 \pagestyle{fancy}
 \renewcommand{\chaptermark}[1]{%
 \markboth{#1}{}}
@@ -563,9 +569,9 @@
 \renewcommand{\footrulewidth}{0pt}
 \addtolength{\headheight}{.1pt}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% --- Estilo t^^c3^^adtulos
+%% --- Estilo títulos
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  Estilo de cap^^c3^^adtulo
+%%  Estilo de capítulo
 \titleformat{\chapter}[display]
     {\vspace{-2cm}\bfseries\scshape\centering}
     {\huge\chaptertitlename\ \ \thechapter}{1ex}
@@ -581,7 +587,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% --- Estilo teoremas
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  Keys temporales: |tipo|,|color|, |contador| e |ic^^c3^^b3no|.
+%%  Keys temporales: |tipo|,|color|, |contador| e |icóno|.
 \def\tcb@@tipo{}
     \tcbset{ tipo/.code = {\def\tcb@@tipo{#1} } }
 \def\tcb@@contador{}
@@ -590,15 +596,15 @@
     \tcbset{ color/.code = {\def\tcb@@color{#1} } }
 \def\tcb@@icono{{\large\faWarning}}
     \tcbset{ icono/.code = {\def\tcb@@icono{#1} } }
-%%  Estilo de teorema cl^^c3^^a1sico
+%%  Estilo de teorema clásico
 \newtheoremstyle{estiloteorema}%
-    {9pt}{9pt}{}{0pt}{\bfseries\scshape\color{\tcb@@color}}{.}{ }{}
+    {9pt}{9pt}{}{0pt}{\bfseries\scshape}{.}{ }{}
 %%  Estilo de teorema nuevo
 \newtheoremstyle{estiloteoreman}%
     {9pt}{9pt}{}{0pt}{\bfseries\sffamily\color{\tcb@@color}}{}{ }{\thmname{#1}\thmnumber{ #2}.\thmnote{ --#3--}}
-%%  Formatos del estilo cl^^c3^^a1sico
+%%  Formatos del estilo clásico
 %%
-%%  Recuadro sin t^^c3^^adtulo aparte
+%%  Recuadro sin título aparte
 \tcbset{ recuadrost/.style ={
     before skip=10pt,arc=0mm,breakable,enhanced,
     colback=\tcb@@color!5,colframe=\tcb@@color,
@@ -608,16 +614,16 @@
     parbox=false
     }
     }
-%%  Escritura del t^^c3^^adtulo
+%%  Escritura del título
 \newcommand\tbc@escrituratitulo[1][]{%
     \strut{%
         \bfseries\scshape\tcb@@tipo~\thechapter.\arabic{\tcb@@contador}%
             \ifthenelse{\equal{#1}{}}{}{:\upshape~#1}%
         }
     }
-%%  Dibujo del t^^c3^^adtulo a la izquierda
+%%  Dibujo del título a la izquierda
 \newcommand\tbc@dibujotituloizq[1][]{%
-    % Creaci^^c3^^b3n del nombre para medirlo
+    % Creación del nombre para medirlo
     \node[xshift=13pt,yshift=\@espteo,thick,anchor=west](titulo) at (frame.north west)%
         {\tbc@escrituratitulo[#1]};
     % Sombra del recuadro
@@ -641,7 +647,7 @@
     \node[xshift=13pt,yshift=-0.8ex,thick,anchor=west] at (frame.north west)%
         {\tbc@escrituratitulo[#1]};
     }
-%%  Recuadro con t^^c3^^adtulo aparte a la izquierda
+%%  Recuadro con título aparte a la izquierda
 \tcbset{ recuadroctizq/.style ={
     % Opciones generales
     before skip=10pt,arc=0mm,breakable,enhanced,
@@ -652,13 +658,13 @@
     fontupper=\normalsize,
     code={\refstepcounter{\tcb@@contador}},
     parbox=false,
-    % Dibujo del t^^c3^^adtulo
+    % Dibujo del título
     overlay unbroken and first = {\tbc@dibujotituloizq[#1]}
     }
     }
-%%  Dibujo del t^^c3^^adtulo a la derecha
+%%  Dibujo del título a la derecha
 \newcommand\tbc@dibujotituloder[1][]{%
-    % Creaci^^c3^^b3n del nombre para medirlo
+    % Creación del nombre para medirlo
     \node[xshift=-13pt,yshift=\@espteo,thick,anchor=east](titulo) at (frame.north east)%
         {\tbc@escrituratitulo[#1]};
     % Sombra del recuadro
@@ -682,7 +688,7 @@
     \node[xshift=-13pt,yshift=-0.8ex,thick,anchor=east] at (frame.north east)%
         {\tbc@escrituratitulo[#1]};
     }
-%%  Recuadro con t^^c3^^adtulo aparte a la derecha
+%%  Recuadro con título aparte a la derecha
 \tcbset{ recuadroctder/.style ={
     % Opciones generales
     before skip=10pt,arc=0mm,breakable,enhanced,
@@ -693,7 +699,7 @@
     fontupper=\normalsize,
     code={\refstepcounter{\tcb@@contador}},
     parbox=false,
-    % Dibujo del t^^c3^^adtulo
+    % Dibujo del título
     overlay unbroken and first= {\tbc@dibujotituloder[#1]}
     }
     }
@@ -709,9 +715,9 @@
     sharp corners,rounded corners=southeast,arc is angular,arc=3mm,
     parbox=false,
     underlay unbroken and last = {%
-        \path[fill=tcbcol@back!80!black]
+        \path[fill=tcbcolback!80!black]
         ([yshift=3mm]interior.south east) --++ (-0.4,-0.1) --++ (0.1,-0.2);
-        \path[draw=tcbcol@frame,shorten <=-0.05mm,shorten >=-0.05mm]
+        \path[draw=tcbcolframe,shorten <=-0.05mm,shorten >=-0.05mm]
         ([yshift=3mm]interior.south east) --++ (-0.4,-0.1) --++ (0.1,-0.2);
         \path[fill=\tcb@@color!50!black,draw=none]
         (interior.south west) rectangle node[white]{\tcb@@icono} ([xshift=5.5mm]interior.north west);
@@ -724,7 +730,7 @@
     }
 %%  Formatos del estilo nuevo
 %%
-%%  Recuadro con t^^c3^^adtulo aparte interno
+%%  Recuadro con título aparte interno
 \tcbset{ recuadroctint/.style ={
     % -> Opciones generales
     before skip=10pt,arc=0mm,breakable,enhanced,
@@ -735,7 +741,7 @@
     fontupper=\normalsize,
     code={\refstepcounter{\tcb@@contador}},
     parbox=false,
-    % Dibujo del t^^c3^^adtulo
+    % Dibujo del título
     overlay unbroken and first = {
         % Borde superior grueso
         \draw[\tcb@@color,line width =2.5cm]
@@ -750,10 +756,10 @@
     }
     }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% --- Definici^^c3^^b3n de ambientes de teoremas
+%% --- Definición de ambientes de teoremas
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% --- Teoremas en el formato cl^^c3^^a1sico
+%% --- Teoremas en el formato clásico
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthenelse{\equal{\@tipo}{fclasico}}
 {
@@ -772,15 +778,15 @@
         \tcolorboxenvironment{lem}{color=colordef,recuadrost}
     \newtheorem{ejer}{Ejercicio}[chapter]
         \tcolorboxenvironment{ejer}{color=colordef,recuadrost}
-%%  Ambientes con t^^c3^^adtulo aparte: |teo|.
+%%  Ambientes con título aparte: |teo|.
 \newtcolorbox{teo}[1][]
     {tipo=Teorema,contador=prop,color=colordef,recuadroctizq={#1}}
-%%  Ambientes con t^^c3^^adtulo aparte: |defi|.
+%%  Ambientes con título aparte: |defi|.
 \newcounter{defi}[chapter]
 \renewcommand{\thedefi}{\thechapter.\arabic{defi}}
 \newtcolorbox{defi}[1][]
-    {tipo=Definici^^c3^^b3n,contador=defi,color=colordef,recuadroctizq={#1}}
-%%  Ambientes con t^^c3^^adtulo aparte: |axioma|.
+    {tipo=Definición,contador=defi,color=colordef,recuadroctizq={#1}}
+%%  Ambientes con título aparte: |axioma|.
 \newcounter{axioma}[chapter]
 \renewcommand{\theaxioma}{\thechapter.\arabic{axioma}}
 \newtcolorbox{axioma}[1][]
@@ -816,15 +822,15 @@
         \tcolorboxenvironment{ejer}{%
             color=colordef,recuadrost,colback=gray!5,drop fuzzy shadow
         }
-%%  Ambientes con t^^c3^^adtulo aparte: |teo|.
+%%  Ambientes con título aparte: |teo|.
 \newtcolorbox{teo}[1][]
     {tipo=Teorema,contador=prop,color=colordef,recuadroctint={#1}}
-%%  Ambientes con t^^c3^^adtulo aparte: |defi|.
+%%  Ambientes con título aparte: |defi|.
 \newcounter{defi}[chapter]
 \renewcommand{\thedefi}{\thechapter.\arabic{defi}}
 \newtcolorbox{defi}[1][]
     {tipo=Definici\'on,contador=defi,color=colordef,recuadroctint={#1}}
-%%  Ambientes con t^^c3^^adtulo aparte: |axioma|.
+%%  Ambientes con título aparte: |axioma|.
 \newcounter{axioma}[chapter]
 \renewcommand{\theaxioma}{\thechapter.\arabic{axioma}}
 \newtcolorbox{axioma}[1][]
@@ -833,7 +839,7 @@
 \newtcolorbox{advertencia}
     {color=yellow,postit}
 }
-%%  Y ^^c2^^a1se acab^^c3^^b3!
+%%  Y ¡se acabó!
 \endinput
 %%
 %% End of file `aleph-libro.cls'.
