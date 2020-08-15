@@ -16,20 +16,20 @@
 \newcommand{\package}[1]{\texttt{#1}}
 
 \title{\file{aleph-libro.cls}}
-\author{Andr\'es Merino}
-\date{2019-12-17}
+\author{Proyecto Alephsub0\\ Andr\'es Merino}
+\date{2020-08-15\\ Versión 1.1}
 
 \begin{document}
  
 \maketitle
  
 \begin{abstract}
-    \file{aleph-libro.cls} es una clase creada para dar formato a los libros y fascículos de libros con alto contenido matemático. Esta clase genera la portada de los libros, la contraportada, los ambientes utilizados, entre otros.
+    \file{aleph-libro.cls} es una clase creada para dar formato a los libros y fascículos de libros con alto contenido matemático. Esta clase genera la portada de los libros, la contraportada, los ambientes utilizados, entre otros. Esta clase fue generada dentro del proyecto Alephsub0 (\url{https://www.alephsub0.org/}).
 \end{abstract}
 
 \section{Introducción}
 
-La clase \file{aleph-libro.cls} es parte del conjunto de clases y paquetes creados por Andrés Merino dentro de su proyecto personal Alephsub0. Está basada en la clase \file{pubciencias-libro.cls} la cual, a su vez, se basa en la clase \file{PubCiencias.cls} (ambas del mismo autor) que recoge el formato de los primeros libros editados en la Unidad de Publicaciones de la EPN. Se actualizó el nombre de esta clase para continuar con el mantenimiento de la misma dentro del proyecto Alephsub0
+La clase \file{aleph-libro.cls} es parte del conjunto de clases y paquetes creados por Andrés Merino dentro de su proyecto personal Alephsub0. Está basada en la clase \file{pubciencias-libro.cls} la cual, a su vez, se basa en la clase \file{PubCiencias.cls} (ambas del mismo autor) que recoge el formato de los primeros libros editados en la Unidad de Publicaciones de la EPN. Se actualizó el nombre de esta clase para continuar con el mantenimiento de la misma dentro del proyecto Alephsub0.
     
 La clase provee el formato de la portada, portadilla, hoja de créditos,   contraportada, encabezados y pie de página, además del tamaño de página y márgenes de cada tipo de libro, los cuales se especifican como opción de la clase.
 
@@ -41,11 +41,11 @@ Para cargar la clase se utiliza: \cs{documentclass}\oarg{opciones}|{aleph-libro}
 
 Las opciones de la clase son las siguientes:
 \begin{description}
-    \item[|10pt|, |11pt|, |12pt|] ajustan el tamaño de fuente.
-    \item[|amplio|, |compacto|] genera la geometría del libro predeterminada, es decir, tamaño de página y márgenes. Las dimensiones generadas por por estas opciones están dadas en la Tabla~\ref{tab:01}.
-    \item[|notasm|] aumenta el margen externo a 5cm y define las dimensiones necesarias para colocar notas al margen.
-    \item[|numobs|] numera el ambiente de Observaciones predefinidas por la clase.
-    \item[|clasico|, |nuevo|] define estilos de teoremas como en la versión original o un nuevo estilo introducido en la versión 2.0 del paquete.
+    \item[|10pt|, |11pt|, |12pt|] ajustan el tamaño de fuente. Por defecto, se usa |10pt|.
+    \item[|amplio|, |compacto|] genera la geometría del libro predeterminada, es decir, tamaño de página y márgenes. Las dimensiones generadas por por estas opciones están dadas en la Tabla~\ref{tab:01}. Por defecto, se usa |compacto|.
+    \item[|notasm|] aumenta el margen externo a 5cm y define las dimensiones necesarias para colocar notas al margen. Por defecto, esta opción está desactivada.
+    \item[|numobs|] numera el ambiente de Observaciones predefinidas por la clase. Por defecto, esta opción está desactivada.
+    \item[|fclasico|, |fnuevo|] define estilos para teoremas, definiciones y demás. La opción |fclasico| usa el estilo con el que empezó esta clase; |fnuevo| es un nuevo estilo, actualmente en desarrollo por Daniel Lara. Por defecto, se usa |fclasico|.
     \item[|npblanco|] elimina las páginas en blanco generadas luego de la portada y antes de la contraportada.
 \end{description}
   
@@ -65,12 +65,14 @@ Las opciones de la clase son las siguientes:
 
 Las clase trabaja con dos colores básicos:
 \begin{description}
-    \item[|colorp|] es el color de la portada y de los título. El color predefinido por la clase es $(1,5,100)$ del formato |RGB|.
-    \item[|colordef|] es el color preestablecido para los ambientes de teoremas y notas al margen. El color predefinido por la clase es $(1,5,100)$ del formato |RGB|.
+    \item[|colorportada|] es el color de la portada y de los título.  El color predefinido por la clase es $(0.81,0.62,0.00,0.22)$ del formato |cmyk|.
+    \item[|colordef|] es el color preestablecido para los ambientes de teoremas y notas al margen.  El color predefinido por la clase es $(0.81,0.62,0.00,0.22)$ del formato |cmyk|.
+    \item[|colortext|] es el color preestablecido para los títulos $(0.81,0.62,0.00,0.22)$ del formato |cmyk|.
 \end{description}
 Se puede cambiar fácilmente estos colores con los comandos\\
-    \hspace*{3em}\cs{definecolor}|{colorp}|\marg{formato de color}\marg{color}\\
-    \hspace*{3em}\cs{definecolor}|{colordef}|\marg{formato de color}\marg{color}
+    \hspace*{3em}\cs{definecolor}|{colorportada}|\marg{formato de color}\marg{color}\\
+    \hspace*{3em}\cs{definecolor}|{colordef}|\marg{formato de color}\marg{color}\\
+    \hspace*{3em}\cs{definecolor}|{colortext}|\marg{formato de color}\marg{color}
 
 \subsection{Comandos de datos del libro}
 
@@ -86,7 +88,7 @@ Se puede cambiar fácilmente estos colores con los comandos\\
 
 \DescribeMacro{\serie}
 \DescribeMacro{\numero}
-    El comando \cmd{\serie} tiene dos argumentos para el nombre de la serie de libros, el primero el nombre en plural y el segundo en singular. El comando \cmd{numero} guarda el número de libro dentro de la serie.
+    El comando \cmd{\serie} tiene dos argumentos para el nombre de la serie de libros, el primero el nombre en plural y el segundo en singular. El comando \cmd{\numero} guarda el número de libro dentro de la serie.
 
 \DescribeMacro{\logouno}
 \DescribeMacro{\logodos}
@@ -322,13 +324,22 @@ Con esto se obtiene la imagen indicada en la Figura~\ref{fig:05}.
 
 \begin{enumerate}
 \item 
-    Para la versión 2.0, se han eliminado las opciones de |guia| y |resumen| y se han implementado las opciones de |clasico| y |nuevo|. Además, se han optimizado la generación de recuadros utilizando el paquete |tcolorbox|.
+    Para la versión 1.1, se han eliminado las opciones de |guia| y |resumen| y se han implementado las opciones de |fclasico| y |fnuevo|. Además, se ha optimizado la generación de recuadros utilizando el paquete |tcolorbox|.
 \end{enumerate}
 
 
 \subsection{Problemas}
 
-Siempre que se utilicen notas al margen es obligatorio no retirar la página luego de la portada.
+\begin{itemize}
+\item
+    Siempre que se utilicen notas al margen es obligatorio no retirar la página luego de la portada.
+\item 
+    La versión actual trabaja bien en la versión de TeXLive 2019 en adelante (específicamente, con el paquete \package{tcolorcox} v4.20). Si se usa una versión anterior, existe una incompatibilidad con la actualización del paquete. Para utilizar versiones anteriores de ese paquete, es necesario cambiar:
+    \begin{itemize}
+        \item |tcbcolback| por |tcbcol@back|
+        \item |tcbcolframe| por |tcbcol@frame|
+    \end{itemize}
+\end{itemize}
 
 Cualquier otro problema adicional, por favor reportarlo a\\ 
 \url{mat.andresmerino@gmail.com}.
