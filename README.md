@@ -1,4 +1,4 @@
-## aleph-notas 1.1
+## aleph-libro 1.1
 
 Esta clase fue creada para dar formato a libros y fascículos de libros con alto contenido matemático. Esta clase genera el la portada, contraportada y dempas del libro. Esta clase fue generada dentro del proyecto Alephsub0 (https://www.alephsub0.org/)
 
